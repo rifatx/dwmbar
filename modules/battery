@@ -2,7 +2,7 @@
 
 # Prints out battery percentage
 
-CHARGING_ICON=' '
+CHARGING_ICON=''
 WARNING_ICON=' '
 BATTERY_FULL_ICON=''
 BATTERY_2_ICON=''
@@ -37,7 +37,7 @@ get_battery()
 			BAT_ICON=$BATTERY_2_ICON
 		fi
 	fi
-	echo "$ICON$BAT_ICON  $capacity%"
+	echo "$ICON$BAT_ICON $capacity%"
 }
 
 get_battery

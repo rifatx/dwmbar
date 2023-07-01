@@ -27,7 +27,7 @@ OUTPUT=""
 get_bar()
 {
 	for module in $MODULES; do
-		if [[ $INTERNET -eq 0 ]] || [[ $ONLINE_MODULES != *"$module"* ]];then
+		if [[ -f "$OUTPUT_CACHE$module" ]] && ([[ $INTERNET -eq 0 ]] || [[ $ONLINE_MODULES != *"$module"* ]]);then
 			module_out="$(cat "$OUTPUT_CACHE""$module" | sed 's/\.$//g')"
 			bar="$bar$module_out"
 		fi
@@ -51,6 +51,8 @@ run_module()
 	elif [[ ! "$out" = "" ]]; then
 		out="$out$SEPARATOR."
 		echo "$out" > "$OUTPUT_CACHE$module"
+	elif [[ "$out" = "" ]]; then
+		[[ -f "$OUTPUT_CACHE$module" ]] && rm -f "$OUTPUT_CACHE$module" 
 	fi
 }
 

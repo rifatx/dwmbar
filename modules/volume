@@ -8,6 +8,7 @@ VOLUME_MUTED_ICON=''
 get_volume(){
         curStatus=$(pactl get-sink-mute @DEFAULT_SINK@)
         volume=$(pactl get-sink-volume @DEFAULT_SINK@ | tail -n 2 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,' | head -n 1)
+	volume=$(printf %03d ${volume})
 
         if [ "${curStatus}" = 'Mute: yes' ]
         then

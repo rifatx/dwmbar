@@ -26,6 +26,8 @@ get_load()
   cpu_last=("${cpu_now[@]}")
   cpu_last_sum=$cpu_sum
 
+  cpu_usage=$(printf %02d ${cpu_usage})
+
   echo "$PREFIX $cpu_usage%"
 }
 
